@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - .:/var/www/html
+      - ./zip:/var/www/html/zip
+      - ./reports:/var/www/html/reports
+    depends_on:
+      - php
+
+  php:
+    build: .
+    volumes:
+      - .:/var/www/html
+      - ./zip:/var/www/html/zip
+      - ./reports:/var/www/html/reports
