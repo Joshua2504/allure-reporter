@@ -37,6 +37,12 @@ if (!$project || !$state) {
     exit;
 }
 
+if ($state !== 'prod' && $state !== 'stag') {
+    http_response_code(400);
+    echo "Invalid state: must be 'prod' or 'stag'\n";
+    exit;
+}
+
 if (!isset($_ENV['API_KEY']) || $api_key !== $_ENV['API_KEY']) {
     http_response_code(401);
     echo "Invalid API key\n";

@@ -55,12 +55,12 @@ Upload an Allure report zip file:
 ```bash
 curl -X POST \
   -F "zip_file=@/path/to/allure-report.zip" \
-  "http://localhost/upload.php?project=myproject&state=staging&api_key=your_api_key"
+  "http://localhost/upload.php?project=myproject&state=prod&api_key=your_api_key"
 ```
 
 **Parameters:**
 - `project` (required): Project name
-- `state` (required): Environment/state (e.g., staging, production)
+- `state` (required): Environment/state, must be 'prod' or 'stag'
 - `api_key` (required): Your API key from `.env`
 - `zip_file` (required): The Allure report zip file
 
